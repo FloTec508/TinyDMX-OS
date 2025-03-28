@@ -20,6 +20,8 @@ void CommandLineEdit::processCommand(QString input){
 
     QList<int> fixtureIDs;
     QList<int> groupIDs;
+
+
     int source = 0; // 0 = fixture, 1 = group
    // int mask;
     int command = 0;//0 = select 1 = delete 2 = record
@@ -94,7 +96,11 @@ void CommandLineEdit::processCommand(QString input){
 
     switch(command){
     case 0:
+        if(source == 0){
         manager->selectFixture(fixtureIDs[0],fixtureIDs[1]);
+        } else if(source == 1){
+        manager->selectGroup(groupIDs[0], groupIDs[1]);
+        }
         break;
     case 1:
         msg = "deleting " + QString::number(fixtureIDs[0]) + " thru " + QString::number(fixtureIDs[1]);

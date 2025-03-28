@@ -173,6 +173,24 @@ void FixtureManager::selectFixture(int startID, int endID){
 
 }
 
+
+void FixtureManager::selectGroup(int startID, int endID){
+    m_fixtures_tree->clearSelection();
+
+    for(int i = 0; i < m_fixtures_tree->topLevelItemCount(); i++){
+        QTreeWidgetItem *item = m_fixtures_tree->topLevelItem(i);
+
+            int fixtureID = item->text(1).toInt();
+
+            if(fixtureID >= startID && fixtureID <= endID){
+                item->setSelected(true);
+            }
+
+
+
+    }
+}
+
 int FixtureManager::getGroupID(QString name){
     for (int i = 0; i < m_fixtures_tree->topLevelItemCount(); i++){
         QTreeWidgetItem *item = m_fixtures_tree->topLevelItem(i);
@@ -180,6 +198,7 @@ int FixtureManager::getGroupID(QString name){
             return i;
         }
     }
+    return 0;
 }
 
 FixtureManager* FixtureManager::instance()

@@ -111,6 +111,9 @@ public:
     /** Get a Group'S ID by its name */
     int getGroupID(QString name);
 
+    /** Select given Fixtures from the Tree view*/
+    void selectGroup(int startID, int endID);
+
 private:
     /** Open a fixture selector to add new fixtures */
     void addFixture();
